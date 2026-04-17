@@ -1,0 +1,34 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build outputs
+dist/
+.turbo/
+*.tsbuildinfo
+
+# Test artifacts
+coverage/
+.vitest-cache/
+
+# Env
+.env
+.env.local
+.env.*.local
+
+# Editor / OS
+.DS_Store
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+
+# Changesets
+.changeset/*.md
+!.changeset/README.md
+!.changeset/config.json
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
