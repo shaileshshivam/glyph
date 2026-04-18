@@ -36,3 +36,10 @@ export type {
   PluginSettings,
 } from './plugin/types';
 export { definePlugin } from './plugin/define';
+
+export type {
+  GlyphConfig,
+  GlyphThemeConfig,
+  GlyphBranding,
+} from './config/types';
+export { defineConfig } from './config/define';
