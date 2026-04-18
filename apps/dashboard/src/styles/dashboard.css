@@ -72,3 +72,24 @@
   background: var(--glyph-bg-raised);
   padding: 2px 6px;
 }
+
+.glyph-dashboard__breadcrumb {
+  font-family: var(--glyph-font-label);
+  font-size: 12px;
+  color: var(--glyph-ink-tertiary);
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: var(--glyph-space-2);
+}
+.glyph-dashboard__breadcrumb:hover {
+  color: var(--glyph-ink);
+}
+
+.glyph-dashboard__entry {
+  display: flex;
+  flex-direction: column;
+  gap: var(--glyph-space-1);
+  padding: var(--glyph-space-3) var(--glyph-space-4);
+  background: var(--glyph-bg-surface);
+  border: 1px solid var(--glyph-border);
+}
