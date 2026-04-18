@@ -52,6 +52,22 @@ importers:
         specifier: 5.4.10
         version: 5.4.10(@types/node@25.6.0)
 
+  packages/auth-env:
+    dependencies:
+      '@glyph/core':
+        specifier: workspace:*
+        version: link:../core
+    devDependencies:
+      tsup:
+        specifier: 8.3.5
+        version: 8.3.5(postcss@8.5.10)(typescript@5.7.2)
+      typescript:
+        specifier: 5.7.2
+        version: 5.7.2
+      vitest:
+        specifier: 2.1.8
+        version: 2.1.8(@types/node@25.6.0)(jsdom@26.0.0)(msw@2.7.0(@types/node@25.6.0)(typescript@5.7.2))
+
   packages/core:
     devDependencies:
       tsup:
