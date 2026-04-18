@@ -151,12 +151,47 @@ export function createGithubStorageAdapter(options: GithubStorageOptions): Stora
       return result;
     },
 
-    async delete(_path, _options?: StorageDeleteOptions) {
-      throw new Error('not implemented yet');
+    async delete(path, deleteOptions?: StorageDeleteOptions) {
+      const fullPath = resolvePath(path);
+
+      let sha: string | undefined;
+      try {
+        const existing = await client.rest.repos.getContent({
+          owner: options.owner,
+          repo: options.repo,
+          path: fullPath,
+          ref: branch,
+        });
+        if (!Array.isArray(existing.data) && existing.data.type === 'file') {
+          sha = existing.data.sha;
+        }
+      } catch (err) {
+        if ((err as { status?: number }).status === 404) return;
+        throw err;
+      }
+
+      if (!sha) return;
+
+      const author = deleteOptions?.author ?? options.author;
+
+      await client.rest.repos.deleteFile({
+        owner: options.owner,
+        repo: options.repo,
+        path: fullPath,
+        branch,
+        message: deleteOptions?.message ?? `chore(content): delete ${path}`,
+        sha,
+        ...(author ? { committer: author, author } : {}),
+      });
     },
 
     async branch() {
-      throw new Error('not implemented yet');
+      const res = await client.rest.repos.getBranch({
+        owner: options.owner,
+        repo: options.repo,
+        branch,
+      });
+      return { name: res.data.name, head: res.data.commit.sha };
     },
   };
 }

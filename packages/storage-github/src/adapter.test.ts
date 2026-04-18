@@ -141,3 +141,36 @@ describe('GithubStorageAdapter.write', () => {
     expect(result.revision).toBe('updated-sha');
   });
 });
+
+describe('GithubStorageAdapter.delete', () => {
+  test('deletes an existing file', async () => {
+    server.use(
+      handlers.getContent('acme', 'site', 'old.mdx', {
+        type: 'file',
+        encoding: 'base64',
+        content: '',
+        sha: 'old-sha',
+        path: 'old.mdx',
+      }),
+      handlers.deleteContent('acme', 'site', 'old.mdx'),
+    );
+
+    await expect(adapter().delete('old.mdx')).resolves.toBeUndefined();
+  });
+
+  test('is a no-op for a missing file', async () => {
+    server.use(handlers.getContentMissing('acme', 'site', 'never-existed.mdx'));
+
+    await expect(adapter().delete('never-existed.mdx')).resolves.toBeUndefined();
+  });
+});
+
+describe('GithubStorageAdapter.branch', () => {
+  test('returns branch name and head sha', async () => {
+    server.use(handlers.getBranch('acme', 'site', 'main', 'head-sha'));
+
+    const info = await adapter().branch();
+
+    expect(info).toEqual({ name: 'main', head: 'head-sha' });
+  });
+});
