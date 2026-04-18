@@ -56,11 +56,7 @@ export function yamlSchema(options: YamlSchemaOptions): SchemaAdapter {
   };
 }
 
-function validateFieldType(
-  name: string,
-  type: string,
-  value: unknown,
-): ValidationError | null {
+function validateFieldType(name: string, type: string, value: unknown): ValidationError | null {
   switch (type) {
     case 'string':
     case 'text':

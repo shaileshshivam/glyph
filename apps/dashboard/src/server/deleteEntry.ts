@@ -10,9 +10,7 @@ export const deleteEntry = createServerFn({ method: 'POST' })
     return { collection: d.collection, slug: d.slug };
   })
   .handler(async ({ data }): Promise<{ ok: boolean }> => {
-    const config = await loadConfig(
-      resolveConfigPath({ env: process.env, cwd: process.cwd() }),
-    );
+    const config = await loadConfig(resolveConfigPath({ env: process.env, cwd: process.cwd() }));
     const schemas = config.schema !== undefined ? await config.schema.parse('') : [];
     const schema = schemas.find((s) => s.name === data.collection);
     const folder = schema?.folder ?? data.collection;

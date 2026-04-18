@@ -22,11 +22,7 @@ function CollectionPage() {
         </Link>
         <h1 className="glyph-dashboard__title">{name}</h1>
       </header>
-      <Link
-        to="/collections/$name/new"
-        params={{ name }}
-        className="glyph-button-like"
-      >
+      <Link to="/collections/$name/new" params={{ name }} className="glyph-button-like">
         + New entry
       </Link>
       <section className="glyph-dashboard__section">

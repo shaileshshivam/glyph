@@ -1,8 +1,8 @@
 import type { CollectionSchema } from '@glyph/core';
 import { createServerFn } from '@tanstack/react-start';
 import { loadConfig, resolveConfigPath } from '../lib/config';
-import type { EntryDetail } from './getEntry';
 import type { SerializableCollectionSchema } from './getCollectionSchema';
+import type { EntryDetail } from './getEntry';
 
 type JsonPrimitive = string | number | boolean | null;
 type JsonValue = JsonPrimitive | JsonValue[] | { [key: string]: JsonValue };
@@ -14,24 +14,18 @@ export const newEntryTemplate = createServerFn({ method: 'GET' })
     return { collection: d.collection };
   })
   .handler(async ({ data }): Promise<EntryDetail> => {
-    const config = await loadConfig(
-      resolveConfigPath({ env: process.env, cwd: process.cwd() }),
-    );
+    const config = await loadConfig(resolveConfigPath({ env: process.env, cwd: process.cwd() }));
     const schemas: CollectionSchema[] =
       config.schema !== undefined ? await config.schema.parse('') : [];
     const schema = schemas.find((s) => s.name === data.collection) ?? null;
 
     const defaults =
-      schema !== null && config.schema !== undefined
-        ? config.schema.getDefaults(schema)
-        : {};
+      schema !== null && config.schema !== undefined ? config.schema.getDefaults(schema) : {};
 
     // Strip non-serializable `unknown`-typed properties on the schema before
     // returning across the server-fn boundary (see getCollectionSchema.ts).
     const serializableSchema =
-      schema === null
-        ? null
-        : (JSON.parse(JSON.stringify(schema)) as SerializableCollectionSchema);
+      schema === null ? null : (JSON.parse(JSON.stringify(schema)) as SerializableCollectionSchema);
 
     const detail: EntryDetail = {
       collection: data.collection,

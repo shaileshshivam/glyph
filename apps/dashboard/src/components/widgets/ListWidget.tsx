@@ -1,5 +1,5 @@
-import { type KeyboardEvent, useMemo, useState } from 'react';
 import { Input } from '@glyph/ui';
+import { type KeyboardEvent, useMemo, useState } from 'react';
 import type { WidgetProps } from './types';
 
 export function ListWidget({ value, onChange, id, field }: WidgetProps<string[]>) {

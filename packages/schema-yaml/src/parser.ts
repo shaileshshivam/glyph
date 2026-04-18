@@ -1,6 +1,6 @@
+import type { CollectionSchema, FieldSchema } from '@glyph/core';
 import { load as yamlLoad } from 'js-yaml';
 import { z } from 'zod';
-import type { CollectionSchema, FieldSchema } from '@glyph/core';
 
 const SUPPORTED_FIELD_TYPES = [
   'string',

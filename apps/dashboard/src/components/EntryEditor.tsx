@@ -1,8 +1,8 @@
 import { Button, Dialog, useToast } from '@glyph/ui';
 import { useNavigate, useRouter } from '@tanstack/react-router';
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import type { EntryDetail } from '../server/getEntry';
 import { deleteEntry } from '../server/deleteEntry';
+import type { EntryDetail } from '../server/getEntry';
 import { saveEntry } from '../server/saveEntry';
 import { FormGenerator } from './FormGenerator';
 import { MarkdownWidget } from './widgets/MarkdownWidget';
@@ -17,9 +17,7 @@ export function EntryEditor({ entry, isNew = false }: EntryEditorProps) {
   const navigate = useNavigate();
   const { add: addToast } = useToast();
 
-  const [frontmatter, setFrontmatter] = useState<Record<string, unknown>>(
-    entry.frontmatter,
-  );
+  const [frontmatter, setFrontmatter] = useState<Record<string, unknown>>(entry.frontmatter);
   const [body, setBody] = useState<string>(entry.body);
   const [errors, setErrors] = useState<Record<string, string | undefined>>({});
   const [saving, setSaving] = useState(false);
@@ -34,8 +32,7 @@ export function EntryEditor({ entry, isNew = false }: EntryEditorProps) {
   );
 
   const isDirty = useMemo(
-    () =>
-      JSON.stringify(frontmatter) !== baseline.fm || body !== baseline.body,
+    () => JSON.stringify(frontmatter) !== baseline.fm || body !== baseline.body,
     [frontmatter, body, baseline],
   );
 
@@ -58,12 +55,7 @@ export function EntryEditor({ entry, isNew = false }: EntryEditorProps) {
         if (field.type === 'markdown') continue;
         if (field.required === true) {
           const v = frontmatter[field.name];
-          if (
-            v === undefined ||
-            v === null ||
-            v === '' ||
-            (Array.isArray(v) && v.length === 0)
-          ) {
+          if (v === undefined || v === null || v === '' || (Array.isArray(v) && v.length === 0)) {
             next[field.name] = 'Required';
           }
         }
@@ -114,17 +106,7 @@ export function EntryEditor({ entry, isNew = false }: EntryEditorProps) {
         setSaving(false);
       }
     },
-    [
-      validate,
-      frontmatter,
-      body,
-      entry.collection,
-      entry.slug,
-      isNew,
-      addToast,
-      router,
-      navigate,
-    ],
+    [validate, frontmatter, body, entry.collection, entry.slug, isNew, addToast, router, navigate],
   );
 
   // cmd+s = save draft, cmd+shift+p = publish
@@ -170,20 +152,12 @@ export function EntryEditor({ entry, isNew = false }: EntryEditorProps) {
     <div className="glyph-editor-layout">
       <header className="glyph-editor-layout__toolbar">
         <div className="glyph-editor-layout__title">
-          <span className="glyph-editor-layout__collection">
-            {entry.collection}
-          </span>
+          <span className="glyph-editor-layout__collection">{entry.collection}</span>
           <span className="glyph-editor-layout__slug">{entry.slug}</span>
-          {isDirty && (
-            <span className="glyph-editor-layout__dirty">• unsaved</span>
-          )}
+          {isDirty && <span className="glyph-editor-layout__dirty">• unsaved</span>}
         </div>
         <div className="glyph-editor-layout__actions">
-          <Button
-            variant="ghost"
-            onClick={() => void save(false)}
-            disabled={saving || !isDirty}
-          >
+          <Button variant="ghost" onClick={() => void save(false)} disabled={saving || !isDirty}>
             Save draft
           </Button>
           <Button onClick={() => void save(true)} disabled={saving}>
@@ -198,17 +172,9 @@ export function EntryEditor({ entry, isNew = false }: EntryEditorProps) {
                   Delete
                 </Button>
               }
-              footer={
-                <DeleteConfirm
-                  slug={entry.slug}
-                  onConfirm={() => void handleDelete()}
-                />
-              }
+              footer={<DeleteConfirm slug={entry.slug} onConfirm={() => void handleDelete()} />}
             >
-              <p>
-                This is irreversible in the UI (but it's in git history, of
-                course).
-              </p>
+              <p>This is irreversible in the UI (but it's in git history, of course).</p>
             </Dialog>
           )}
         </div>
@@ -229,15 +195,9 @@ export function EntryEditor({ entry, isNew = false }: EntryEditorProps) {
         </aside>
         <section className="glyph-editor-layout__body">
           {markdownField !== null ? (
-            <MarkdownWidget
-              field={markdownField}
-              value={body}
-              onChange={(v) => setBody(v ?? '')}
-            />
+            <MarkdownWidget field={markdownField} value={body} onChange={(v) => setBody(v ?? '')} />
           ) : (
-            <p className="glyph-editor-layout__note">
-              No markdown field in schema.
-            </p>
+            <p className="glyph-editor-layout__note">No markdown field in schema.</p>
           )}
         </section>
       </div>
@@ -245,13 +205,7 @@ export function EntryEditor({ entry, isNew = false }: EntryEditorProps) {
   );
 }
 
-function DeleteConfirm({
-  slug,
-  onConfirm,
-}: {
-  slug: string;
-  onConfirm: () => void;
-}) {
+function DeleteConfirm({ slug, onConfirm }: { slug: string; onConfirm: () => void }) {
   const [typed, setTyped] = useState('');
   return (
     <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>

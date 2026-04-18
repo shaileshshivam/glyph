@@ -12,13 +12,7 @@ export interface FormGeneratorProps {
   filter?: (field: FieldSchema) => boolean;
 }
 
-export function FormGenerator({
-  schema,
-  values,
-  errors,
-  onChange,
-  filter,
-}: FormGeneratorProps) {
+export function FormGenerator({ schema, values, errors, onChange, filter }: FormGeneratorProps) {
   const fields =
     filter === undefined
       ? schema.fields.filter((f) => f.type !== 'markdown')
@@ -47,9 +41,7 @@ export function FormGenerator({
                 invalid={error !== undefined}
               />
             ) : (
-              <p style={{ color: 'var(--glyph-danger)' }}>
-                Unknown widget type: {field.type}
-              </p>
+              <p style={{ color: 'var(--glyph-danger)' }}>Unknown widget type: {field.type}</p>
             )}
           </Field>
         );

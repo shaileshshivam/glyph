@@ -34,9 +34,7 @@ export const saveEntry = createServerFn({ method: 'POST' })
     return d as SaveEntryInput;
   })
   .handler(async ({ data }): Promise<SaveEntryResult> => {
-    const config = await loadConfig(
-      resolveConfigPath({ env: process.env, cwd: process.cwd() }),
-    );
+    const config = await loadConfig(resolveConfigPath({ env: process.env, cwd: process.cwd() }));
     const schemas = config.schema !== undefined ? await config.schema.parse('') : [];
     const schema = schemas.find((s) => s.name === data.collection);
     const folder = schema?.folder ?? data.collection;
