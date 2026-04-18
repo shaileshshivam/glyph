@@ -1,6 +1,6 @@
 {
   "name": "@glyph/storage-github",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "StorageAdapter for Glyph — uses the GitHub REST API to read/write repo content.",
   "license": "MIT",
   "repository": {
