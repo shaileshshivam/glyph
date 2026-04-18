@@ -1,6 +1,6 @@
 {
   "name": "@glyph/core",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Framework-agnostic core for Glyph CMS — adapter interfaces, plugin host, config helpers.",
   "license": "MIT",
   "repository": {

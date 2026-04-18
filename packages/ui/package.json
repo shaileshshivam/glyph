@@ -1,6 +1,6 @@
 {
   "name": "@glyph/ui",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "React component library for Glyph — Base UI primitives, CodeMirror editor, themeable via CSS variables.",
   "license": "MIT",
   "repository": {
