@@ -6,6 +6,12 @@ node_modules/
 dist/
 .turbo/
 *.tsbuildinfo
+.output/
+.nitro/
+.tanstack/
+
+# TanStack Router generated files
+**/routeTree.gen.ts
 
 # Test artifacts
 coverage/

@@ -1,0 +1,7 @@
+@import '@glyph/ui/styles.css';
+@import '@glyph/theme-mithila/theme.css';
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
