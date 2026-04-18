@@ -1,7 +1,12 @@
 import { describe, expect, test } from 'vitest';
+import { http, HttpResponse } from 'msw';
 import { StorageEntryNotFoundError } from '@glyph/core';
 import { createGithubStorageAdapter } from './adapter';
-import { server, handlers } from './__tests__/mocks';
+import { API, server, handlers } from './__tests__/mocks';
+
+function encodeContentPath(path: string): string {
+  return path.split('/').map(encodeURIComponent).join('%2F');
+}
 
 function adapter() {
   return createGithubStorageAdapter({
@@ -57,5 +62,42 @@ describe('GithubStorageAdapter.read', () => {
 
     expect(entry.isBinary).toBe(true);
     expect(entry.content).toBe(Buffer.from(binaryBytes).toString('base64'));
+  });
+});
+
+describe('GithubStorageAdapter.list', () => {
+  test('lists files in a directory (top-level only)', async () => {
+    server.use(
+      http.get(
+        `${API}/repos/acme/site/contents/${encodeContentPath('src/content/posts')}`,
+        () =>
+          HttpResponse.json([
+            { type: 'file', path: 'src/content/posts/a.mdx', sha: 'sha-a', name: 'a.mdx' },
+            { type: 'file', path: 'src/content/posts/b.mdx', sha: 'sha-b', name: 'b.mdx' },
+            { type: 'dir', path: 'src/content/posts/archive', sha: 'sha-dir', name: 'archive' },
+          ]),
+      ),
+    );
+
+    const entries = await adapter().list('src/content/posts');
+
+    expect(entries).toHaveLength(2); // directory skipped
+    expect(entries[0]).toMatchObject({
+      path: 'src/content/posts/a.mdx',
+      revision: 'sha-a',
+      isBinary: false,
+    });
+  });
+
+  test('returns empty array for empty directories', async () => {
+    server.use(
+      http.get(
+        `${API}/repos/acme/site/contents/${encodeContentPath('src/content/empty')}`,
+        () => HttpResponse.json([]),
+      ),
+    );
+
+    const entries = await adapter().list('src/content/empty');
+    expect(entries).toEqual([]);
   });
 });

@@ -76,8 +76,39 @@ export function createGithubStorageAdapter(options: GithubStorageOptions): Stora
       }
     },
 
-    async list(_path) {
-      throw new Error('not implemented yet');
+    async list(path) {
+      const fullPath = resolvePath(path);
+      const res = await client.rest.repos.getContent({
+        owner: options.owner,
+        repo: options.repo,
+        path: fullPath,
+        ref: branch,
+      });
+
+      const data = res.data;
+      if (!Array.isArray(data)) {
+        // A single file was returned — wrap as a list of one
+        if (data.type === 'file') {
+          return [
+            {
+              path: data.path,
+              content: '',
+              isBinary: false,
+              revision: data.sha,
+            },
+          ];
+        }
+        return [];
+      }
+
+      return data
+        .filter((item) => item.type === 'file')
+        .map((item) => ({
+          path: item.path,
+          content: '',
+          isBinary: false,
+          revision: item.sha,
+        }));
     },
 
     async write(_path, _content, _options?: StorageWriteOptions) {
