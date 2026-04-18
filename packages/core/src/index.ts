@@ -43,3 +43,6 @@ export type {
   GlyphBranding,
 } from './config/types';
 export { defineConfig } from './config/define';
+
+export { createPluginHost } from './plugin/host';
+export type { PluginHost } from './plugin/host';
