@@ -3,69 +3,69 @@
    ========================================================================== */
 
 @font-face {
-  font-family: 'Cormorant Garamond';
+  font-family: "Cormorant Garamond";
   font-style: normal;
   font-weight: 300 600;
   font-display: swap;
-  src: url('./fonts/cormorant-garamond-normal.woff2') format('woff2');
+  src: url("./fonts/cormorant-garamond-normal.woff2") format("woff2");
 }
 @font-face {
-  font-family: 'Cormorant Garamond';
+  font-family: "Cormorant Garamond";
   font-style: italic;
   font-weight: 300 600;
   font-display: swap;
-  src: url('./fonts/cormorant-garamond-italic.woff2') format('woff2');
+  src: url("./fonts/cormorant-garamond-italic.woff2") format("woff2");
 }
 @font-face {
-  font-family: 'Libre Baskerville';
+  font-family: "Libre Baskerville";
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('./fonts/libre-baskerville-normal.woff2') format('woff2');
+  src: url("./fonts/libre-baskerville-normal.woff2") format("woff2");
 }
 @font-face {
-  font-family: 'Libre Baskerville';
+  font-family: "Libre Baskerville";
   font-style: italic;
   font-weight: 400;
   font-display: swap;
-  src: url('./fonts/libre-baskerville-italic.woff2') format('woff2');
+  src: url("./fonts/libre-baskerville-italic.woff2") format("woff2");
 }
 @font-face {
-  font-family: 'Josefin Sans';
+  font-family: "Josefin Sans";
   font-style: normal;
   font-weight: 300;
   font-display: swap;
-  src: url('./fonts/josefin-sans-300.woff2') format('woff2');
+  src: url("./fonts/josefin-sans-300.woff2") format("woff2");
 }
 
 :root {
   /* Type stacks */
-  --glyph-font-display: 'Cormorant Garamond', Georgia, serif;
-  --glyph-font-body: 'Libre Baskerville', Georgia, serif;
-  --glyph-font-mono: 'JetBrains Mono', 'SF Mono', ui-monospace, monospace;
-  --glyph-font-label: 'Josefin Sans', ui-sans-serif, system-ui, sans-serif;
+  --glyph-font-display: "Cormorant Garamond", Georgia, serif;
+  --glyph-font-body: "Libre Baskerville", Georgia, serif;
+  --glyph-font-mono: "JetBrains Mono", "SF Mono", ui-monospace, monospace;
+  --glyph-font-label: "Josefin Sans", ui-sans-serif, system-ui, sans-serif;
 
   /* Mithila palette */
-  --glyph-ink: #0E0A04;
-  --glyph-ink-secondary: #3D2B0E;
-  --glyph-ink-tertiary: #7A5C30;
-  --glyph-ink-ghost: rgba(14, 10, 4, 0.30);
-  --glyph-bg-base: #FAF4E6;
-  --glyph-bg-surface: #F3EAD3;
-  --glyph-bg-raised: #EDE0C0;
-  --glyph-bg-contrast: #0E0A04;
+  --glyph-ink: #0e0a04;
+  --glyph-ink-secondary: #3d2b0e;
+  --glyph-ink-tertiary: #7a5c30;
+  --glyph-ink-ghost: rgba(14, 10, 4, 0.3);
+  --glyph-bg-base: #faf4e6;
+  --glyph-bg-surface: #f3ead3;
+  --glyph-bg-raised: #ede0c0;
+  --glyph-bg-contrast: #0e0a04;
 
-  --glyph-accent: #C0341F;             /* vermilion */
-  --glyph-accent-hover: #A02815;
+  --glyph-accent: #c0341f; /* vermilion */
+  --glyph-accent-hover: #a02815;
   --glyph-accent-muted: rgba(192, 52, 31, 0.12);
-  --glyph-warning: #D47B0F;             /* saffron */
-  --glyph-success: #235C2A;             /* green */
-  --glyph-danger: #B8385A;              /* lotus */
+  --glyph-warning: #d47b0f; /* saffron */
+  --glyph-success: #235c2a; /* green */
+  --glyph-danger: #b8385a; /* lotus */
 
   --glyph-border: rgba(14, 10, 4, 0.18);
   --glyph-border-strong: rgba(14, 10, 4, 0.35);
   --glyph-border-focus: var(--glyph-accent);
-  --glyph-shadow: 4px 4px 0 rgba(14, 10, 4, 0.10);
+  --glyph-shadow: 4px 4px 0 rgba(14, 10, 4, 0.1);
   --glyph-shadow-lg: 8px 8px 0 rgba(14, 10, 4, 0.12);
   --glyph-radius-sm: 0px;
   --glyph-radius-md: 0px;
@@ -73,24 +73,24 @@
 }
 
 [data-theme="dark"] {
-  --glyph-ink: #F0E6CC;
-  --glyph-ink-secondary: #C8AA7A;
-  --glyph-ink-tertiary: #8A6B3A;
-  --glyph-ink-ghost: rgba(240, 230, 204, 0.30);
-  --glyph-bg-base: #0A0705;
-  --glyph-bg-surface: #130D07;
-  --glyph-bg-raised: #1C1209;
-  --glyph-bg-contrast: #FAF4E6;
+  --glyph-ink: #f0e6cc;
+  --glyph-ink-secondary: #c8aa7a;
+  --glyph-ink-tertiary: #8a6b3a;
+  --glyph-ink-ghost: rgba(240, 230, 204, 0.3);
+  --glyph-bg-base: #0a0705;
+  --glyph-bg-surface: #130d07;
+  --glyph-bg-raised: #1c1209;
+  --glyph-bg-contrast: #faf4e6;
 
-  --glyph-accent: #D94C32;
-  --glyph-accent-hover: #E96543;
+  --glyph-accent: #d94c32;
+  --glyph-accent-hover: #e96543;
   --glyph-accent-muted: rgba(217, 76, 50, 0.18);
-  --glyph-warning: #E8961A;
-  --glyph-success: #3A8A44;
-  --glyph-danger: #D44870;
+  --glyph-warning: #e8961a;
+  --glyph-success: #3a8a44;
+  --glyph-danger: #d44870;
 
   --glyph-border: rgba(240, 230, 204, 0.15);
   --glyph-border-strong: rgba(240, 230, 204, 0.35);
-  --glyph-shadow: 4px 4px 0 rgba(0, 0, 0, 0.40);
+  --glyph-shadow: 4px 4px 0 rgba(0, 0, 0, 0.4);
   --glyph-shadow-lg: 8px 8px 0 rgba(0, 0, 0, 0.45);
 }

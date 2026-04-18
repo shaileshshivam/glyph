@@ -1,9 +1,9 @@
-import { useEffect, useRef } from 'react';
-import type { ReactElement } from 'react';
+import { defaultKeymap, history, historyKeymap } from '@codemirror/commands';
+import { markdown } from '@codemirror/lang-markdown';
 import { EditorState } from '@codemirror/state';
 import { EditorView, keymap } from '@codemirror/view';
-import { defaultKeymap, historyKeymap, history } from '@codemirror/commands';
-import { markdown } from '@codemirror/lang-markdown';
+import type { ReactElement } from 'react';
+import { useEffect, useRef } from 'react';
 import { cn } from '../lib/cn';
 import { rosePineDawnTheme, rosePineMoonTheme } from './editor-theme';
 

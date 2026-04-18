@@ -1,13 +1,11 @@
-import { describe, expect, test, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
+import { describe, expect, test, vi } from 'vitest';
 import { Select } from './Select';
 
 describe('Select', () => {
   test('renders trigger with placeholder', () => {
-    render(
-      <Select placeholder="Pick one" options={[{ value: 'a', label: 'A' }]} />,
-    );
+    render(<Select placeholder="Pick one" options={[{ value: 'a', label: 'A' }]} />);
     expect(screen.getByRole('combobox')).toHaveTextContent('Pick one');
   });
 

@@ -1,5 +1,5 @@
-import type { ReactElement } from 'react';
 import { Select as BaseSelect } from '@base-ui-components/react/select';
+import type { ReactElement } from 'react';
 import { cn } from '../lib/cn';
 
 export interface SelectOption {
@@ -85,12 +85,7 @@ export function Select({
 function ChevronIcon(): ReactElement {
   return (
     <svg width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
-      <path
-        d="M1 1l4 4 4-4"
-        stroke="currentColor"
-        strokeWidth="1.2"
-        strokeLinecap="round"
-      />
+      <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
     </svg>
   );
 }

@@ -1,5 +1,5 @@
-import type { ReactElement, ReactNode } from 'react';
 import { Toast as BaseToast } from '@base-ui-components/react/toast';
+import type { ReactElement, ReactNode } from 'react';
 import { cn } from '../lib/cn';
 
 export interface ToastOptions {

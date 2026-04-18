@@ -1,15 +1,13 @@
-import { describe, expect, test } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
-import { ToastProvider, useToast } from './Toast';
+import { describe, expect, test } from 'vitest';
 import { Button } from './Button';
+import { ToastProvider, useToast } from './Toast';
 
 function Trigger() {
   const { add } = useToast();
   return (
-    <Button onClick={() => add({ title: 'Saved', description: 'Live in ~25s' })}>
-      Trigger
-    </Button>
+    <Button onClick={() => add({ title: 'Saved', description: 'Live in ~25s' })}>Trigger</Button>
   );
 }
 

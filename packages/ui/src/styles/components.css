@@ -140,7 +140,10 @@
 .glyph-field__label {
   margin-bottom: var(--glyph-space-1);
 }
-.glyph-field__control { display: flex; flex-direction: column; }
+.glyph-field__control {
+  display: flex;
+  flex-direction: column;
+}
 .glyph-field__hint,
 .glyph-field__error {
   font-family: var(--glyph-font-body);
@@ -148,8 +151,12 @@
   margin: 0;
   margin-top: var(--glyph-space-1);
 }
-.glyph-field__hint { color: var(--glyph-ink-tertiary); }
-.glyph-field__error { color: var(--glyph-danger); }
+.glyph-field__hint {
+  color: var(--glyph-ink-tertiary);
+}
+.glyph-field__error {
+  color: var(--glyph-danger);
+}
 
 /* ==========================================================================
    Select
@@ -205,7 +212,9 @@
   max-height: 320px;
   overflow-y: auto;
   transform-origin: top center;
-  transition: opacity var(--glyph-duration-fast) var(--glyph-ease), transform var(--glyph-duration-fast) var(--glyph-ease);
+  transition:
+    opacity var(--glyph-duration-fast) var(--glyph-ease),
+    transform var(--glyph-duration-fast) var(--glyph-ease);
 }
 .glyph-select__popup[data-starting-style],
 .glyph-select__popup[data-ending-style] {
@@ -245,7 +254,9 @@
   justify-content: center;
   opacity: 0;
 }
-.glyph-select__item[data-selected] .glyph-select__indicator { opacity: 1; }
+.glyph-select__item[data-selected] .glyph-select__indicator {
+  opacity: 1;
+}
 
 /* ==========================================================================
    Dialog
@@ -263,11 +274,17 @@
 }
 
 @keyframes glyph-dialog-backdrop-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 @keyframes glyph-dialog-backdrop-out {
-  to { opacity: 0; }
+  to {
+    opacity: 0;
+  }
 }
 
 .glyph-dialog__popup {
@@ -290,11 +307,20 @@
 }
 
 @keyframes glyph-dialog-pop-in {
-  from { opacity: 0; transform: translate(-50%, -48%) scale(0.96); }
-  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  from {
+    opacity: 0;
+    transform: translate(-50%, -48%) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
 }
 @keyframes glyph-dialog-pop-out {
-  to { opacity: 0; transform: translate(-50%, -48%) scale(0.96); }
+  to {
+    opacity: 0;
+    transform: translate(-50%, -48%) scale(0.96);
+  }
 }
 
 .glyph-dialog__title {
@@ -313,7 +339,9 @@
   margin: 0 0 var(--glyph-space-4);
 }
 
-.glyph-dialog__body { color: var(--glyph-ink); }
+.glyph-dialog__body {
+  color: var(--glyph-ink);
+}
 
 .glyph-dialog__footer {
   display: flex;
@@ -338,9 +366,14 @@
   color: var(--glyph-ink-tertiary);
   border-radius: var(--glyph-radius-sm);
   cursor: pointer;
-  transition: background-color var(--glyph-duration-fast) var(--glyph-ease), color var(--glyph-duration-fast) var(--glyph-ease);
+  transition:
+    background-color var(--glyph-duration-fast) var(--glyph-ease),
+    color var(--glyph-duration-fast) var(--glyph-ease);
 }
-.glyph-dialog__close:hover { background: var(--glyph-bg-surface); color: var(--glyph-ink); }
+.glyph-dialog__close:hover {
+  background: var(--glyph-bg-surface);
+  color: var(--glyph-ink);
+}
 
 /* ==========================================================================
    Toast
@@ -380,10 +413,18 @@
   transform: translateX(16px);
 }
 
-.glyph-toast--info { border-left-color: var(--glyph-accent); }
-.glyph-toast--success { border-left-color: var(--glyph-success); }
-.glyph-toast--warning { border-left-color: var(--glyph-warning); }
-.glyph-toast--danger { border-left-color: var(--glyph-danger); }
+.glyph-toast--info {
+  border-left-color: var(--glyph-accent);
+}
+.glyph-toast--success {
+  border-left-color: var(--glyph-success);
+}
+.glyph-toast--warning {
+  border-left-color: var(--glyph-warning);
+}
+.glyph-toast--danger {
+  border-left-color: var(--glyph-danger);
+}
 
 .glyph-toast__title {
   font-weight: 500;
@@ -410,7 +451,10 @@
   border-radius: var(--glyph-radius-sm);
   cursor: pointer;
 }
-.glyph-toast__close:hover { color: var(--glyph-ink); background: var(--glyph-bg-surface); }
+.glyph-toast__close:hover {
+  color: var(--glyph-ink);
+  background: var(--glyph-bg-surface);
+}
 
 /* ==========================================================================
    CodeEditor (CodeMirror wrapper)

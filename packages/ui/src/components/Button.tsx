@@ -1,4 +1,4 @@
-import { forwardRef, type ButtonHTMLAttributes } from 'react';
+import { type ButtonHTMLAttributes, forwardRef } from 'react';
 import { cn } from '../lib/cn';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'ghost';
@@ -15,12 +15,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         ref={ref}
         type={type}
-        className={cn(
-          'glyph-btn',
-          `glyph-btn--${variant}`,
-          `glyph-btn--${size}`,
-          className,
-        )}
+        className={cn('glyph-btn', `glyph-btn--${variant}`, `glyph-btn--${size}`, className)}
         {...props}
       />
     );

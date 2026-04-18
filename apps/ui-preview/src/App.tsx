@@ -1,21 +1,23 @@
-import { useState } from 'react';
+import { Fish, Lotus, Peacock, Surya, Yantra } from '@glyph/theme-mithila';
 import {
   Button,
-  Input,
-  Textarea,
-  Field,
-  Select,
+  CodeEditor,
   Dialog,
+  Field,
+  Input,
+  Select,
+  Textarea,
   ToastProvider,
   useToast,
-  CodeEditor,
 } from '@glyph/ui';
-import { Lotus, Peacock, Fish, Surya, Yantra } from '@glyph/theme-mithila';
+import { useState } from 'react';
 
 function ToastDemo() {
   const { add } = useToast();
   return (
-    <Button onClick={() => add({ title: 'Committed', description: 'Live in ~25s', tone: 'success' })}>
+    <Button
+      onClick={() => add({ title: 'Committed', description: 'Live in ~25s', tone: 'success' })}
+    >
       Trigger toast
     </Button>
   );
@@ -24,8 +26,12 @@ function ToastDemo() {
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <section style={{ marginBottom: 32 }}>
-      <h2 style={{ fontFamily: 'var(--glyph-font-display)', fontSize: 22, marginBottom: 16 }}>{title}</h2>
-      <div style={{ display: 'flex', gap: 16, alignItems: 'center', flexWrap: 'wrap' }}>{children}</div>
+      <h2 style={{ fontFamily: 'var(--glyph-font-display)', fontSize: 22, marginBottom: 16 }}>
+        {title}
+      </h2>
+      <div style={{ display: 'flex', gap: 16, alignItems: 'center', flexWrap: 'wrap' }}>
+        {children}
+      </div>
     </section>
   );
 }

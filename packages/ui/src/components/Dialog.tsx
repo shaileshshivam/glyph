@@ -1,5 +1,5 @@
-import type { ReactElement, ReactNode } from 'react';
 import { Dialog as BaseDialog } from '@base-ui-components/react/dialog';
+import type { ReactElement, ReactNode } from 'react';
 import { cn } from '../lib/cn';
 
 export interface DialogProps {
@@ -48,9 +48,7 @@ export function Dialog({
         pass any component. Narrow the cast to the exact shape Base UI expects —
         no `any`, no runtime change.
       */}
-      <BaseDialog.Trigger
-        render={trigger as ReactElement<Record<string, unknown>>}
-      />
+      <BaseDialog.Trigger render={trigger as ReactElement<Record<string, unknown>>} />
       <BaseDialog.Portal>
         <BaseDialog.Backdrop className="glyph-dialog__backdrop" />
         <BaseDialog.Popup className={cn('glyph-dialog__popup', className)}>
@@ -61,17 +59,9 @@ export function Dialog({
             </BaseDialog.Description>
           )}
           <div className="glyph-dialog__body">{children}</div>
-          {footer !== undefined && (
-            <div className="glyph-dialog__footer">{footer}</div>
-          )}
+          {footer !== undefined && <div className="glyph-dialog__footer">{footer}</div>}
           <BaseDialog.Close className="glyph-dialog__close" aria-label="Close">
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 14 14"
-              fill="none"
-              aria-hidden="true"
-            >
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
               <path
                 d="M3 3L11 11M11 3L3 11"
                 stroke="currentColor"
