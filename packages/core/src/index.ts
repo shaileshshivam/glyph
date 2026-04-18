@@ -11,3 +11,5 @@ export { StorageEntryNotFoundError } from './adapters/storage';
 
 export type { AuthAdapter, AuthSession, AuthAdapterContext } from './adapters/auth';
 export { AuthRequiredError, AuthForbiddenError } from './adapters/auth';
+
+export type { MediaAdapter, MediaUpload, MediaAsset } from './adapters/media';
