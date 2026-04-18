@@ -1,0 +1,16 @@
+@import './tokens.css';
+
+/* Base reset scoped to Glyph UI surfaces (opt-in via class) */
+.glyph-root {
+  font-family: var(--glyph-font-body);
+  color: var(--glyph-ink);
+  background: var(--glyph-bg-base);
+  line-height: var(--glyph-line-height-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.glyph-root *:focus-visible {
+  outline: 2px solid var(--glyph-border-focus);
+  outline-offset: 2px;
+}

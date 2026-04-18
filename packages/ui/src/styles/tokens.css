@@ -1,0 +1,88 @@
+/* ==========================================================================
+   @glyph/ui — design token declarations (fallback values)
+   A theme package (e.g. @glyph/theme-mithila) overrides these.
+   ========================================================================== */
+
+:root {
+  /* Type stacks */
+  --glyph-font-display: Georgia, serif;
+  --glyph-font-body: Georgia, serif;
+  --glyph-font-mono: ui-monospace, 'SF Mono', monospace;
+  --glyph-font-label: ui-sans-serif, system-ui, sans-serif;
+
+  /* Type scale */
+  --glyph-font-size-xs: 11px;
+  --glyph-font-size-sm: 13px;
+  --glyph-font-size-body: 15px;
+  --glyph-font-size-lg: 18px;
+  --glyph-font-size-xl: 22px;
+  --glyph-font-size-2xl: 28px;
+  --glyph-font-size-3xl: 36px;
+  --glyph-line-height-body: 1.6;
+  --glyph-line-height-tight: 1.2;
+  --glyph-letter-spacing-label: 0.24em;
+
+  /* Palette — semantic, not named-color */
+  --glyph-ink: #0E0A04;
+  --glyph-ink-secondary: #3D2B0E;
+  --glyph-ink-tertiary: #7A5C30;
+  --glyph-ink-ghost: rgba(14, 10, 4, 0.35);
+  --glyph-bg-base: #FAFAFA;
+  --glyph-bg-surface: #F5F5F5;
+  --glyph-bg-raised: #EDEDED;
+  --glyph-bg-contrast: #0E0A04;
+
+  --glyph-accent: #4F46E5;
+  --glyph-accent-hover: #4338CA;
+  --glyph-accent-muted: rgba(79, 70, 229, 0.12);
+  --glyph-warning: #D97706;
+  --glyph-success: #059669;
+  --glyph-danger: #DC2626;
+
+  /* Surfaces */
+  --glyph-border: rgba(14, 10, 4, 0.12);
+  --glyph-border-strong: rgba(14, 10, 4, 0.25);
+  --glyph-border-focus: var(--glyph-accent);
+  --glyph-shadow: 0 2px 4px rgba(14, 10, 4, 0.08);
+  --glyph-shadow-lg: 0 8px 24px rgba(14, 10, 4, 0.12);
+  --glyph-radius-sm: 4px;
+  --glyph-radius-md: 6px;
+  --glyph-radius-lg: 10px;
+
+  /* Spacing */
+  --glyph-space-1: 4px;
+  --glyph-space-2: 8px;
+  --glyph-space-3: 12px;
+  --glyph-space-4: 16px;
+  --glyph-space-5: 24px;
+  --glyph-space-6: 32px;
+  --glyph-space-7: 48px;
+  --glyph-space-8: 64px;
+
+  /* Motion */
+  --glyph-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --glyph-ease-out: cubic-bezier(0.0, 0.0, 0.2, 1);
+  --glyph-duration-fast: 120ms;
+  --glyph-duration-base: 220ms;
+  --glyph-duration-slow: 400ms;
+
+  /* Motifs (optional — themes fill in) */
+  --glyph-motif-corner: none;
+  --glyph-motif-divider: none;
+}
+
+[data-theme="dark"] {
+  --glyph-ink: #F0EBDE;
+  --glyph-ink-secondary: #C8B896;
+  --glyph-ink-tertiary: #8A7A5A;
+  --glyph-ink-ghost: rgba(240, 235, 222, 0.35);
+  --glyph-bg-base: #0A0705;
+  --glyph-bg-surface: #15110B;
+  --glyph-bg-raised: #1F1910;
+  --glyph-bg-contrast: #FAFAFA;
+  --glyph-border: rgba(240, 235, 222, 0.12);
+  --glyph-border-strong: rgba(240, 235, 222, 0.25);
+  --glyph-accent: #818CF8;
+  --glyph-accent-hover: #6366F1;
+  --glyph-accent-muted: rgba(129, 140, 248, 0.15);
+}
