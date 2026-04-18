@@ -116,3 +116,37 @@
   border-color: var(--glyph-danger);
   box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.18);
 }
+
+/* ==========================================================================
+   Label / Field
+   ========================================================================== */
+
+.glyph-label {
+  display: inline-block;
+  font-family: var(--glyph-font-label);
+  font-size: var(--glyph-font-size-xs);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--glyph-ink-secondary);
+  cursor: default;
+}
+
+.glyph-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--glyph-space-1);
+}
+.glyph-field__label {
+  margin-bottom: var(--glyph-space-1);
+}
+.glyph-field__control { display: flex; flex-direction: column; }
+.glyph-field__hint,
+.glyph-field__error {
+  font-family: var(--glyph-font-body);
+  font-size: var(--glyph-font-size-xs);
+  margin: 0;
+  margin-top: var(--glyph-space-1);
+}
+.glyph-field__hint { color: var(--glyph-ink-tertiary); }
+.glyph-field__error { color: var(--glyph-danger); }

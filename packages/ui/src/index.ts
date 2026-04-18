@@ -6,3 +6,7 @@ export { Input } from './components/Input';
 export type { InputProps } from './components/Input';
 export { Textarea } from './components/Textarea';
 export type { TextareaProps } from './components/Textarea';
+export { Label } from './components/Label';
+export type { LabelProps } from './components/Label';
+export { Field } from './components/Field';
+export type { FieldProps } from './components/Field';
