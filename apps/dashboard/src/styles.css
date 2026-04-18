@@ -2,6 +2,7 @@
 @import "@glyph/theme-mithila/theme.css";
 @import "./styles/login.css";
 @import "./styles/dashboard.css";
+@import "./styles/editor.css";
 
 html,
 body {
