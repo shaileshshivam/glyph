@@ -411,3 +411,29 @@
   cursor: pointer;
 }
 .glyph-toast__close:hover { color: var(--glyph-ink); background: var(--glyph-bg-surface); }
+
+/* ==========================================================================
+   CodeEditor (CodeMirror wrapper)
+   ========================================================================== */
+
+.glyph-editor {
+  border: 1px solid var(--glyph-border);
+  border-radius: var(--glyph-radius-md);
+  background: var(--glyph-bg-base);
+  overflow: hidden;
+  font-family: var(--glyph-font-mono);
+  font-size: var(--glyph-font-size-sm);
+  line-height: 1.7;
+}
+.glyph-editor .cm-editor {
+  min-height: 240px;
+}
+.glyph-editor .cm-focused {
+  outline: none;
+}
+.glyph-editor .cm-content {
+  padding: var(--glyph-space-4);
+}
+.glyph-editor .cm-gutters {
+  border-right: 1px solid var(--glyph-border);
+}

@@ -16,3 +16,5 @@ export { Dialog } from './components/Dialog';
 export type { DialogProps } from './components/Dialog';
 export { ToastProvider, useToast, ToastList } from './components/Toast';
 export type { ToastOptions, ToastProviderProps } from './components/Toast';
+export { CodeEditor } from './components/CodeEditor';
+export type { CodeEditorProps } from './components/CodeEditor';
