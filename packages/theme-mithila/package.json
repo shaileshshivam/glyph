@@ -1,0 +1,44 @@
+{
+  "name": "@glyph/theme-mithila",
+  "version": "0.0.0",
+  "description": "Mithila theme for Glyph — vermilion, saffron, Cormorant Garamond, Mithila glyphs (lotus, peacock, fish, surya, yantra, kachni).",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shaileshshivam/glyph.git",
+    "directory": "packages/theme-mithila"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./theme.css": "./dist/theme.css",
+    "./fonts/*": "./dist/fonts/*"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "19.0.2",
+    "react": "19.0.0",
+    "tsup": "8.3.5",
+    "typescript": "5.7.2",
+    "vitest": "2.1.8"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "sideEffects": ["**/*.css"]
+}
