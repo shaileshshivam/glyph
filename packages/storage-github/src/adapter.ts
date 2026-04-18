@@ -2,6 +2,7 @@ import {
   type StorageAdapter,
   type StorageEntry,
   type StorageWriteOptions,
+  type StorageWriteResult,
   type StorageDeleteOptions,
   StorageEntryNotFoundError,
 } from '@glyph/core';
@@ -111,8 +112,43 @@ export function createGithubStorageAdapter(options: GithubStorageOptions): Stora
         }));
     },
 
-    async write(_path, _content, _options?: StorageWriteOptions) {
-      throw new Error('not implemented yet');
+    async write(path, content, writeOptions?: StorageWriteOptions) {
+      const fullPath = resolvePath(path);
+
+      // Fetch existing file to obtain its sha (required for update).
+      let existingSha: string | undefined;
+      try {
+        const existing = await client.rest.repos.getContent({
+          owner: options.owner,
+          repo: options.repo,
+          path: fullPath,
+          ref: branch,
+        });
+        if (!Array.isArray(existing.data) && existing.data.type === 'file') {
+          existingSha = existing.data.sha;
+        }
+      } catch (err) {
+        if ((err as { status?: number }).status !== 404) throw err;
+      }
+
+      const author = writeOptions?.author ?? options.author;
+
+      const res = await client.rest.repos.createOrUpdateFileContents({
+        owner: options.owner,
+        repo: options.repo,
+        path: fullPath,
+        branch,
+        message: writeOptions?.message ?? `chore(content): update ${path}`,
+        content: Buffer.from(content, 'utf-8').toString('base64'),
+        ...(existingSha ? { sha: existingSha } : {}),
+        ...(author ? { committer: author, author } : {}),
+      });
+
+      const resultSha =
+        res.data.commit?.sha ?? res.data.content?.sha ?? existingSha ?? '';
+
+      const result: StorageWriteResult = { path, revision: resultSha };
+      return result;
     },
 
     async delete(_path, _options?: StorageDeleteOptions) {

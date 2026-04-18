@@ -101,3 +101,43 @@ describe('GithubStorageAdapter.list', () => {
     expect(entries).toEqual([]);
   });
 });
+
+describe('GithubStorageAdapter.write', () => {
+  test('creates a new file when it does not exist', async () => {
+    server.use(
+      handlers.getContentMissing('acme', 'site', 'src/content/new.mdx'),
+      handlers.putContent('acme', 'site', 'src/content/new.mdx', 'new-sha'),
+    );
+
+    const result = await adapter().write(
+      'src/content/new.mdx',
+      '# New\n',
+      { message: 'feat: add new file' },
+    );
+
+    expect(result).toEqual({
+      path: 'src/content/new.mdx',
+      revision: 'new-sha',
+    });
+  });
+
+  test('updates an existing file, passing its sha', async () => {
+    server.use(
+      handlers.getContent('acme', 'site', 'src/content/existing.mdx', {
+        type: 'file',
+        encoding: 'base64',
+        content: Buffer.from('original\n').toString('base64'),
+        sha: 'existing-sha',
+        path: 'src/content/existing.mdx',
+      }),
+      handlers.putContent('acme', 'site', 'src/content/existing.mdx', 'updated-sha'),
+    );
+
+    const result = await adapter().write(
+      'src/content/existing.mdx',
+      '# Updated\n',
+    );
+
+    expect(result.revision).toBe('updated-sha');
+  });
+});
