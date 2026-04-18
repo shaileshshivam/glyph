@@ -38,3 +38,8 @@ coverage/
 npm-debug.log*
 yarn-debug.log*
 pnpm-debug.log*
+
+# User-supplied Glyph config (secrets in env vars, but keep the file private)
+/glyph.config.ts
+/.env
+/.env.local
