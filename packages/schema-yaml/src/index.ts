@@ -1,1 +1,3 @@
-export const version = '0.0.0';
+export { yamlSchema } from './adapter';
+export type { YamlSchemaOptions } from './adapter';
+export { parseCollections } from './parser';
