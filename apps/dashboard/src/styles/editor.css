@@ -48,3 +48,10 @@
 .glyph-widget__chip-remove:hover {
   opacity: 0.7;
 }
+
+.glyph-widget__markdown {
+  min-height: 360px;
+}
+.glyph-widget__markdown .glyph-editor {
+  min-height: 360px;
+}
