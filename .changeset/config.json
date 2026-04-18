@@ -13,7 +13,7 @@
     "prereleaseTemplate": "{tag}.{datetime}"
   },
   "privatePackages": {
-    "version": false,
+    "version": true,
     "tag": false
   }
 }

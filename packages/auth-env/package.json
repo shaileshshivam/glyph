@@ -1,6 +1,6 @@
 {
   "name": "@glyph/auth-env",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Single-user password authentication for Glyph — reads password from an env var, signs sessions with HMAC. Simplest viable auth for self-hosted deployments.",
   "license": "MIT",
   "repository": {
@@ -17,7 +17,9 @@
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
