@@ -341,3 +341,73 @@
   transition: background-color var(--glyph-duration-fast) var(--glyph-ease), color var(--glyph-duration-fast) var(--glyph-ease);
 }
 .glyph-dialog__close:hover { background: var(--glyph-bg-surface); color: var(--glyph-ink); }
+
+/* ==========================================================================
+   Toast
+   ========================================================================== */
+
+.glyph-toast__viewport {
+  position: fixed;
+  bottom: var(--glyph-space-4);
+  right: var(--glyph-space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--glyph-space-2);
+  z-index: 1000;
+  width: min(360px, 90vw);
+  pointer-events: none;
+}
+
+.glyph-toast {
+  pointer-events: auto;
+  position: relative;
+  background: var(--glyph-bg-base);
+  border: 1px solid var(--glyph-border);
+  border-left-width: 4px;
+  border-radius: var(--glyph-radius-md);
+  box-shadow: var(--glyph-shadow-lg);
+  padding: var(--glyph-space-3) var(--glyph-space-4);
+  font-family: var(--glyph-font-body);
+  font-size: var(--glyph-font-size-sm);
+  color: var(--glyph-ink);
+  transition:
+    opacity var(--glyph-duration-base) var(--glyph-ease),
+    transform var(--glyph-duration-base) var(--glyph-ease);
+}
+.glyph-toast[data-starting-style],
+.glyph-toast[data-ending-style] {
+  opacity: 0;
+  transform: translateX(16px);
+}
+
+.glyph-toast--info { border-left-color: var(--glyph-accent); }
+.glyph-toast--success { border-left-color: var(--glyph-success); }
+.glyph-toast--warning { border-left-color: var(--glyph-warning); }
+.glyph-toast--danger { border-left-color: var(--glyph-danger); }
+
+.glyph-toast__title {
+  font-weight: 500;
+  margin: 0;
+}
+.glyph-toast__description {
+  color: var(--glyph-ink-secondary);
+  margin: var(--glyph-space-1) 0 0;
+  font-size: var(--glyph-font-size-xs);
+}
+
+.glyph-toast__close {
+  position: absolute;
+  top: var(--glyph-space-2);
+  right: var(--glyph-space-2);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border: none;
+  background: transparent;
+  color: var(--glyph-ink-tertiary);
+  border-radius: var(--glyph-radius-sm);
+  cursor: pointer;
+}
+.glyph-toast__close:hover { color: var(--glyph-ink); background: var(--glyph-bg-surface); }
