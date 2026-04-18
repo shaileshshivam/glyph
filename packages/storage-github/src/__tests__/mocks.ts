@@ -11,16 +11,29 @@ export const server = setupServer();
 /** Helper — shared realistic base URL for Octokit. */
 export const API = 'https://api.github.com';
 
+/**
+ * Octokit URL-encodes path parameters (including `/`) when it builds the
+ * request URL for `GET /repos/{owner}/{repo}/contents/{path}`. MSW compares
+ * URLs literally, so our handler patterns must match the encoded form.
+ */
+function encodeContentPath(path: string): string {
+  return path.split('/').map(encodeURIComponent).join('%2F');
+}
+
+type JsonResponse = Parameters<typeof HttpResponse.json>[0];
+
 /** Handler generators for common GitHub API shapes. */
 export const handlers = {
-  getContent: (owner: string, repo: string, path: string, response: unknown) =>
-    http.get(`${API}/repos/${owner}/${repo}/contents/${path}`, () =>
-      HttpResponse.json(response),
+  getContent: (owner: string, repo: string, path: string, response: JsonResponse) =>
+    http.get(
+      `${API}/repos/${owner}/${repo}/contents/${encodeContentPath(path)}`,
+      () => HttpResponse.json(response),
     ),
 
   getContentMissing: (owner: string, repo: string, path: string) =>
-    http.get(`${API}/repos/${owner}/${repo}/contents/${path}`, () =>
-      HttpResponse.json({ message: 'Not Found' }, { status: 404 }),
+    http.get(
+      `${API}/repos/${owner}/${repo}/contents/${encodeContentPath(path)}`,
+      () => HttpResponse.json({ message: 'Not Found' }, { status: 404 }),
     ),
 
   getBranch: (owner: string, repo: string, branch: string, sha: string) =>
@@ -33,15 +46,18 @@ export const handlers = {
     ),
 
   putContent: (owner: string, repo: string, path: string, newSha: string) =>
-    http.put(`${API}/repos/${owner}/${repo}/contents/${path}`, () =>
-      HttpResponse.json({
-        content: { path, sha: newSha, html_url: '' },
-        commit: { sha: newSha, html_url: '' },
-      }),
+    http.put(
+      `${API}/repos/${owner}/${repo}/contents/${encodeContentPath(path)}`,
+      () =>
+        HttpResponse.json({
+          content: { path, sha: newSha, html_url: '' },
+          commit: { sha: newSha, html_url: '' },
+        }),
     ),
 
   deleteContent: (owner: string, repo: string, path: string) =>
-    http.delete(`${API}/repos/${owner}/${repo}/contents/${path}`, () =>
-      HttpResponse.json({ commit: { sha: 'deleted-sha' } }),
+    http.delete(
+      `${API}/repos/${owner}/${repo}/contents/${encodeContentPath(path)}`,
+      () => HttpResponse.json({ commit: { sha: 'deleted-sha' } }),
     ),
 };

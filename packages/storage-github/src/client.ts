@@ -15,9 +15,12 @@ export interface GitHubClientOptions {
  * into Octokit's construction details.
  */
 export function createGitHubClient(options: GitHubClientOptions): Octokit {
-  return new Octokit({
+  const octokitOptions: ConstructorParameters<typeof Octokit>[0] = {
     auth: options.token,
-    baseUrl: options.baseUrl,
     userAgent: options.userAgent ?? 'glyph',
-  });
+  };
+  if (options.baseUrl !== undefined) {
+    octokitOptions.baseUrl = options.baseUrl;
+  }
+  return new Octokit(octokitOptions);
 }
