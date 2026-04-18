@@ -14,5 +14,6 @@ export default defineConfig({
     // Copy styles to dist so consumers can import '@glyph/ui/styles.css'
     await cp('src/styles/index.css', 'dist/styles.css');
     await cp('src/styles/tokens.css', 'dist/tokens.css');
+    await cp('src/styles/components.css', 'dist/components.css');
   },
 });
