@@ -1,0 +1,44 @@
+{
+  "name": "@glyph/storage-github",
+  "version": "0.0.0",
+  "description": "StorageAdapter for Glyph — uses the GitHub REST API to read/write repo content.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shaileshshivam/glyph.git",
+    "directory": "packages/storage-github"
+  },
+  "homepage": "https://glyph.dev",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@glyph/core": "workspace:*",
+    "octokit": "5.0.5"
+  },
+  "devDependencies": {
+    "msw": "2.7.0",
+    "tsup": "8.3.5",
+    "typescript": "5.7.2",
+    "vitest": "2.1.8"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "sideEffects": false
+}
