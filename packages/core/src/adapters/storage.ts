@@ -20,11 +20,7 @@ export interface StorageAdapter {
    * Create or update an entry. Returns the committed entry with its new
    * revision identifier (e.g. commit SHA).
    */
-  write(
-    path: string,
-    content: string,
-    options?: StorageWriteOptions,
-  ): Promise<StorageWriteResult>;
+  write(path: string, content: string, options?: StorageWriteOptions): Promise<StorageWriteResult>;
 
   /** Delete an entry. No-op if it doesn't exist. */
   delete(path: string, options?: StorageDeleteOptions): Promise<void>;

@@ -1,10 +1,5 @@
 import { assertType, test } from 'vitest';
-import type {
-  SchemaAdapter,
-  CollectionSchema,
-  FieldSchema,
-  ValidationResult,
-} from './schema';
+import type { CollectionSchema, FieldSchema, SchemaAdapter, ValidationResult } from './schema';
 
 test('SchemaAdapter has the expected shape', () => {
   const adapter = {} as SchemaAdapter;

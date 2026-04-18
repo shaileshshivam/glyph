@@ -1,10 +1,10 @@
 import {
   type StorageAdapter,
+  type StorageDeleteOptions,
   type StorageEntry,
+  StorageEntryNotFoundError,
   type StorageWriteOptions,
   type StorageWriteResult,
-  type StorageDeleteOptions,
-  StorageEntryNotFoundError,
 } from '@glyph/core';
 import { createGitHubClient, type GitHubClientOptions } from './client';
 
@@ -144,8 +144,7 @@ export function createGithubStorageAdapter(options: GithubStorageOptions): Stora
         ...(author ? { committer: author, author } : {}),
       });
 
-      const resultSha =
-        res.data.commit?.sha ?? res.data.content?.sha ?? existingSha ?? '';
+      const resultSha = res.data.commit?.sha ?? res.data.content?.sha ?? existingSha ?? '';
 
       const result: StorageWriteResult = { path, revision: resultSha };
       return result;

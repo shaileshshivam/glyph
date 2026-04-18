@@ -1,5 +1,5 @@
 import { assertType, test } from 'vitest';
-import type { AuthAdapter, AuthSession, AuthAdapterContext } from './auth';
+import type { AuthAdapter, AuthAdapterContext, AuthSession } from './auth';
 
 test('AuthAdapter has the expected shape', () => {
   const adapter = {} as AuthAdapter;

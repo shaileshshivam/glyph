@@ -1,8 +1,8 @@
-import { describe, expect, test } from 'vitest';
-import { http, HttpResponse } from 'msw';
 import { StorageEntryNotFoundError } from '@glyph/core';
+import { HttpResponse, http } from 'msw';
+import { describe, expect, test } from 'vitest';
+import { API, handlers, server } from './__tests__/mocks';
 import { createGithubStorageAdapter } from './adapter';
-import { API, server, handlers } from './__tests__/mocks';
 
 function encodeContentPath(path: string): string {
   return path.split('/').map(encodeURIComponent).join('%2F');
@@ -40,9 +40,7 @@ describe('GithubStorageAdapter.read', () => {
   test('throws StorageEntryNotFoundError on 404', async () => {
     server.use(handlers.getContentMissing('acme', 'site', 'missing.mdx'));
 
-    await expect(adapter().read('missing.mdx')).rejects.toBeInstanceOf(
-      StorageEntryNotFoundError,
-    );
+    await expect(adapter().read('missing.mdx')).rejects.toBeInstanceOf(StorageEntryNotFoundError);
   });
 
   test('flags binary content with isBinary: true', async () => {
@@ -68,14 +66,12 @@ describe('GithubStorageAdapter.read', () => {
 describe('GithubStorageAdapter.list', () => {
   test('lists files in a directory (top-level only)', async () => {
     server.use(
-      http.get(
-        `${API}/repos/acme/site/contents/${encodeContentPath('src/content/posts')}`,
-        () =>
-          HttpResponse.json([
-            { type: 'file', path: 'src/content/posts/a.mdx', sha: 'sha-a', name: 'a.mdx' },
-            { type: 'file', path: 'src/content/posts/b.mdx', sha: 'sha-b', name: 'b.mdx' },
-            { type: 'dir', path: 'src/content/posts/archive', sha: 'sha-dir', name: 'archive' },
-          ]),
+      http.get(`${API}/repos/acme/site/contents/${encodeContentPath('src/content/posts')}`, () =>
+        HttpResponse.json([
+          { type: 'file', path: 'src/content/posts/a.mdx', sha: 'sha-a', name: 'a.mdx' },
+          { type: 'file', path: 'src/content/posts/b.mdx', sha: 'sha-b', name: 'b.mdx' },
+          { type: 'dir', path: 'src/content/posts/archive', sha: 'sha-dir', name: 'archive' },
+        ]),
       ),
     );
 
@@ -91,9 +87,8 @@ describe('GithubStorageAdapter.list', () => {
 
   test('returns empty array for empty directories', async () => {
     server.use(
-      http.get(
-        `${API}/repos/acme/site/contents/${encodeContentPath('src/content/empty')}`,
-        () => HttpResponse.json([]),
+      http.get(`${API}/repos/acme/site/contents/${encodeContentPath('src/content/empty')}`, () =>
+        HttpResponse.json([]),
       ),
     );
 
@@ -109,11 +104,9 @@ describe('GithubStorageAdapter.write', () => {
       handlers.putContent('acme', 'site', 'src/content/new.mdx', 'new-sha'),
     );
 
-    const result = await adapter().write(
-      'src/content/new.mdx',
-      '# New\n',
-      { message: 'feat: add new file' },
-    );
+    const result = await adapter().write('src/content/new.mdx', '# New\n', {
+      message: 'feat: add new file',
+    });
 
     expect(result).toEqual({
       path: 'src/content/new.mdx',
@@ -133,10 +126,7 @@ describe('GithubStorageAdapter.write', () => {
       handlers.putContent('acme', 'site', 'src/content/existing.mdx', 'updated-sha'),
     );
 
-    const result = await adapter().write(
-      'src/content/existing.mdx',
-      '# Updated\n',
-    );
+    const result = await adapter().write('src/content/existing.mdx', '# Updated\n');
 
     expect(result.revision).toBe('updated-sha');
   });

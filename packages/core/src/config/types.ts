@@ -1,7 +1,7 @@
-import type { StorageAdapter } from '../adapters/storage';
 import type { AuthAdapter } from '../adapters/auth';
 import type { MediaAdapter } from '../adapters/media';
 import type { SchemaAdapter } from '../adapters/schema';
+import type { StorageAdapter } from '../adapters/storage';
 import type { Plugin } from '../plugin/types';
 
 /**

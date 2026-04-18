@@ -1,5 +1,5 @@
 import { assertType, test } from 'vitest';
-import type { MediaAdapter, MediaUpload, MediaAsset } from './media';
+import type { MediaAdapter, MediaAsset, MediaUpload } from './media';
 
 test('MediaAdapter has the expected shape', () => {
   const adapter = {} as MediaAdapter;

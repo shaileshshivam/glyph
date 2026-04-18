@@ -21,10 +21,7 @@ export interface PluginHost {
   runAfterSave(entry: PluginEntry, ctx: PluginHookContext): Promise<void>;
   runBeforeDelete(path: string, ctx: PluginHookContext): Promise<boolean>;
   runAfterDelete(path: string, ctx: PluginHookContext): Promise<void>;
-  runOnMediaUpload(
-    upload: PluginMediaUpload,
-    ctx: PluginHookContext,
-  ): Promise<PluginMediaUpload>;
+  runOnMediaUpload(upload: PluginMediaUpload, ctx: PluginHookContext): Promise<PluginMediaUpload>;
 }
 
 export function createPluginHost(plugins: readonly Plugin[]): PluginHost {

@@ -1,7 +1,7 @@
 import { describe, expect, test } from 'vitest';
-import { defineConfig } from './define';
-import { definePlugin } from '../plugin/define';
 import type { StorageAdapter } from '../adapters/storage';
+import { definePlugin } from '../plugin/define';
+import { defineConfig } from './define';
 
 describe('defineConfig', () => {
   test('returns the passed config unchanged', () => {

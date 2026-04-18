@@ -1,7 +1,7 @@
-import type { StorageAdapter } from '../adapters/storage';
 import type { AuthAdapter } from '../adapters/auth';
 import type { MediaAdapter } from '../adapters/media';
-import type { SchemaAdapter, FieldType } from '../adapters/schema';
+import type { FieldType, SchemaAdapter } from '../adapters/schema';
+import type { StorageAdapter } from '../adapters/storage';
 
 /**
  * Plugin — the shape every Glyph extension takes.
@@ -92,10 +92,7 @@ export interface PluginHooks {
   /** Runs after an entry is deleted. */
   afterDelete?: (path: string, ctx: PluginHookContext) => Promise<void>;
   /** Runs when a media file is about to be uploaded. */
-  onMediaUpload?: (
-    upload: PluginMediaUpload,
-    ctx: PluginHookContext,
-  ) => Promise<PluginMediaUpload>;
+  onMediaUpload?: (upload: PluginMediaUpload, ctx: PluginHookContext) => Promise<PluginMediaUpload>;
   /** Runs when the editor is initialized. */
   onEditorLoad?: (editorCtx: unknown) => Promise<void>;
 }

@@ -1,6 +1,6 @@
 import { describe, expect, test, vi } from 'vitest';
-import { createPluginHost } from './host';
 import { definePlugin } from './define';
+import { createPluginHost } from './host';
 import type { PluginEntry, PluginHookContext } from './types';
 
 describe('createPluginHost', () => {

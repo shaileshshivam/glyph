@@ -6,9 +6,7 @@ describe('definePlugin', () => {
     const plugin = definePlugin({
       name: 'test-plugin',
       version: '1.0.0',
-      commands: [
-        { id: 'test.hello', label: 'Hello', run: async () => 'hello' },
-      ],
+      commands: [{ id: 'test.hello', label: 'Hello', run: async () => 'hello' }],
     });
 
     expect(plugin.name).toBe('test-plugin');
