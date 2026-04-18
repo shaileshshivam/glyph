@@ -11,7 +11,8 @@ dist/
 .tanstack/
 
 # TanStack Router generated files
-**/routeTree.gen.ts
+# (committed so CI typecheck passes without running vite first)
+# **/routeTree.gen.ts
 
 # Test artifacts
 coverage/
