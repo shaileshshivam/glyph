@@ -22,3 +22,17 @@ export type {
   ValidationResult,
   ValidationError,
 } from './adapters/schema';
+
+export type {
+  Plugin,
+  PluginCommand,
+  PluginCommandContext,
+  PluginRoute,
+  PluginThemeDescriptor,
+  PluginHooks,
+  PluginHookContext,
+  PluginEntry,
+  PluginMediaUpload,
+  PluginSettings,
+} from './plugin/types';
+export { definePlugin } from './plugin/define';
