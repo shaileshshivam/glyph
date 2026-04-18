@@ -92,6 +92,25 @@
   padding: var(--glyph-space-3) var(--glyph-space-4);
   background: var(--glyph-bg-surface);
   border: 1px solid var(--glyph-border);
+  text-decoration: none;
+  color: inherit;
+}
+.glyph-dashboard__entry:hover {
+  border-color: var(--glyph-accent);
+}
+
+.glyph-button-like {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--glyph-space-2);
+  padding: 6px 12px;
+  background: var(--glyph-accent);
+  color: var(--glyph-bg-base);
+  text-decoration: none;
+  font-family: var(--glyph-font-label);
+  font-size: 13px;
+  border-radius: var(--glyph-radius-md);
+  margin-bottom: var(--glyph-space-3);
 }
 
 .glyph-topbar {

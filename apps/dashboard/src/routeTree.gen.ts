@@ -13,6 +13,7 @@ import { Route as LoginRouteImport } from './routes/login'
 import { Route as AuthedRouteImport } from './routes/_authed'
 import { Route as AuthedIndexRouteImport } from './routes/_authed.index'
 import { Route as AuthedCollectionsNameRouteImport } from './routes/_authed.collections.$name'
+import { Route as AuthedCollectionsNameNewRouteImport } from './routes/_authed.collections.$name.new'
 import { Route as AuthedCollectionsNameSlugRouteImport } from './routes/_authed.collections.$name.$slug'
 
 const LoginRoute = LoginRouteImport.update({
@@ -34,6 +35,12 @@ const AuthedCollectionsNameRoute = AuthedCollectionsNameRouteImport.update({
   path: '/collections/$name',
   getParentRoute: () => AuthedRoute,
 } as any)
+const AuthedCollectionsNameNewRoute =
+  AuthedCollectionsNameNewRouteImport.update({
+    id: '/new',
+    path: '/new',
+    getParentRoute: () => AuthedCollectionsNameRoute,
+  } as any)
 const AuthedCollectionsNameSlugRoute =
   AuthedCollectionsNameSlugRouteImport.update({
     id: '/$slug',
@@ -46,12 +53,14 @@ export interface FileRoutesByFullPath {
   '/login': typeof LoginRoute
   '/collections/$name': typeof AuthedCollectionsNameRouteWithChildren
   '/collections/$name/$slug': typeof AuthedCollectionsNameSlugRoute
+  '/collections/$name/new': typeof AuthedCollectionsNameNewRoute
 }
 export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/': typeof AuthedIndexRoute
   '/collections/$name': typeof AuthedCollectionsNameRouteWithChildren
   '/collections/$name/$slug': typeof AuthedCollectionsNameSlugRoute
+  '/collections/$name/new': typeof AuthedCollectionsNameNewRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -60,12 +69,23 @@ export interface FileRoutesById {
   '/_authed/': typeof AuthedIndexRoute
   '/_authed/collections/$name': typeof AuthedCollectionsNameRouteWithChildren
   '/_authed/collections/$name/$slug': typeof AuthedCollectionsNameSlugRoute
+  '/_authed/collections/$name/new': typeof AuthedCollectionsNameNewRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/login' | '/collections/$name' | '/collections/$name/$slug'
+  fullPaths:
+    | '/'
+    | '/login'
+    | '/collections/$name'
+    | '/collections/$name/$slug'
+    | '/collections/$name/new'
   fileRoutesByTo: FileRoutesByTo
-  to: '/login' | '/' | '/collections/$name' | '/collections/$name/$slug'
+  to:
+    | '/login'
+    | '/'
+    | '/collections/$name'
+    | '/collections/$name/$slug'
+    | '/collections/$name/new'
   id:
     | '__root__'
     | '/_authed'
@@ -73,6 +93,7 @@ export interface FileRouteTypes {
     | '/_authed/'
     | '/_authed/collections/$name'
     | '/_authed/collections/$name/$slug'
+    | '/_authed/collections/$name/new'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -110,6 +131,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthedCollectionsNameRouteImport
       parentRoute: typeof AuthedRoute
     }
+    '/_authed/collections/$name/new': {
+      id: '/_authed/collections/$name/new'
+      path: '/new'
+      fullPath: '/collections/$name/new'
+      preLoaderRoute: typeof AuthedCollectionsNameNewRouteImport
+      parentRoute: typeof AuthedCollectionsNameRoute
+    }
     '/_authed/collections/$name/$slug': {
       id: '/_authed/collections/$name/$slug'
       path: '/$slug'
@@ -122,10 +150,12 @@ declare module '@tanstack/react-router' {
 
 interface AuthedCollectionsNameRouteChildren {
   AuthedCollectionsNameSlugRoute: typeof AuthedCollectionsNameSlugRoute
+  AuthedCollectionsNameNewRoute: typeof AuthedCollectionsNameNewRoute
 }
 
 const AuthedCollectionsNameRouteChildren: AuthedCollectionsNameRouteChildren = {
   AuthedCollectionsNameSlugRoute: AuthedCollectionsNameSlugRoute,
+  AuthedCollectionsNameNewRoute: AuthedCollectionsNameNewRoute,
 }
 
 const AuthedCollectionsNameRouteWithChildren =

@@ -22,6 +22,13 @@ function CollectionPage() {
         </Link>
         <h1 className="glyph-dashboard__title">{name}</h1>
       </header>
+      <Link
+        to="/collections/$name/new"
+        params={{ name }}
+        className="glyph-button-like"
+      >
+        + New entry
+      </Link>
       <section className="glyph-dashboard__section">
         <h2 className="glyph-dashboard__section-title">Entries</h2>
         {entries.length === 0 ? (
@@ -30,10 +37,14 @@ function CollectionPage() {
           <ul className="glyph-dashboard__list">
             {entries.map((e) => (
               <li key={e.path} className="glyph-dashboard__item">
-                <div className="glyph-dashboard__entry">
+                <Link
+                  to="/collections/$name/$slug"
+                  params={{ name, slug: e.slug }}
+                  className="glyph-dashboard__entry"
+                >
                   <span className="glyph-dashboard__item-label">{e.slug}</span>
                   <span className="glyph-dashboard__item-count">{e.revision.slice(0, 7)}</span>
-                </div>
+                </Link>
               </li>
             ))}
           </ul>
