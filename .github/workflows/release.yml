@@ -35,14 +35,11 @@ jobs:
       - name: Build
         run: pnpm build
 
-      - name: Create Release PR or Publish
+      - name: Create Release PR
         uses: changesets/action@v1
         with:
-          publish: pnpm changeset publish
           version: pnpm changeset version
           commit: "chore(release): version packages"
           title: "chore(release): version packages"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          NPM_CONFIG_PROVENANCE: true
