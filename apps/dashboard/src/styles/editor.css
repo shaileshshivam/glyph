@@ -61,3 +61,76 @@
 .glyph-widget__markdown .glyph-editor {
   min-height: 360px;
 }
+
+.glyph-editor-layout {
+  display: flex;
+  flex-direction: column;
+  height: calc(100dvh - 56px);
+}
+.glyph-editor-layout__toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--glyph-space-4);
+  padding: var(--glyph-space-3) var(--glyph-space-5);
+  border-bottom: 1px solid var(--glyph-border);
+  background: var(--glyph-bg-surface);
+}
+.glyph-editor-layout__title {
+  display: flex;
+  gap: var(--glyph-space-2);
+  align-items: baseline;
+}
+.glyph-editor-layout__collection {
+  font-family: var(--glyph-font-label);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--glyph-ink-tertiary);
+}
+.glyph-editor-layout__slug {
+  font-family: var(--glyph-font-display);
+  font-size: 22px;
+  color: var(--glyph-ink);
+}
+.glyph-editor-layout__dirty {
+  font-family: var(--glyph-font-body);
+  font-size: 12px;
+  color: var(--glyph-warning);
+}
+.glyph-editor-layout__actions {
+  display: flex;
+  gap: var(--glyph-space-2);
+  align-items: center;
+}
+.glyph-editor-layout__panes {
+  display: grid;
+  grid-template-columns: minmax(320px, 420px) 1fr;
+  flex: 1;
+  overflow: hidden;
+}
+.glyph-editor-layout__form {
+  padding: var(--glyph-space-5);
+  border-right: 1px solid var(--glyph-border);
+  overflow-y: auto;
+  background: var(--glyph-bg-base);
+}
+.glyph-editor-layout__body {
+  padding: var(--glyph-space-5);
+  overflow-y: auto;
+  background: var(--glyph-bg-base);
+}
+.glyph-editor-layout__note {
+  color: var(--glyph-ink-tertiary);
+  font-family: var(--glyph-font-body);
+}
+
+@media (max-width: 960px) {
+  .glyph-editor-layout__panes {
+    grid-template-columns: 1fr;
+  }
+  .glyph-editor-layout__form {
+    border-right: none;
+    border-bottom: 1px solid var(--glyph-border);
+  }
+}

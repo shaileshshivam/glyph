@@ -1,4 +1,4 @@
-import { Button } from '@glyph/ui';
+import { Button, ToastProvider } from '@glyph/ui';
 import { createFileRoute, Outlet, useNavigate, useRouter } from '@tanstack/react-router';
 import { requireSession } from '../lib/auth-context';
 import { signOutAction } from '../server/signOutAction';
@@ -19,7 +19,7 @@ function AuthedLayout() {
     navigate({ to: '/login' });
   }
   return (
-    <div>
+    <ToastProvider>
       <nav className="glyph-topbar">
         <span className="glyph-topbar__brand">Glyph</span>
         <Button variant="ghost" size="sm" onClick={handleSignOut}>
@@ -27,6 +27,6 @@ function AuthedLayout() {
         </Button>
       </nav>
       <Outlet />
-    </div>
+    </ToastProvider>
   );
 }
