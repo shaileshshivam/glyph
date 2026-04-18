@@ -1,0 +1,66 @@
+/* ==========================================================================
+   Button
+   ========================================================================== */
+
+.glyph-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--glyph-space-2);
+  font-family: var(--glyph-font-label);
+  font-size: var(--glyph-font-size-sm);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  border: 1px solid transparent;
+  border-radius: var(--glyph-radius-md);
+  padding: 0 var(--glyph-space-4);
+  height: 36px;
+  cursor: pointer;
+  transition:
+    background-color var(--glyph-duration-fast) var(--glyph-ease),
+    border-color var(--glyph-duration-fast) var(--glyph-ease),
+    color var(--glyph-duration-fast) var(--glyph-ease);
+  user-select: none;
+  text-decoration: none;
+}
+
+.glyph-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.glyph-btn--sm {
+  height: 28px;
+  font-size: var(--glyph-font-size-xs);
+  padding: 0 var(--glyph-space-3);
+}
+
+.glyph-btn--primary {
+  background: var(--glyph-accent);
+  color: var(--glyph-bg-base);
+  border-color: var(--glyph-accent);
+}
+.glyph-btn--primary:hover:not(:disabled) {
+  background: var(--glyph-accent-hover);
+  border-color: var(--glyph-accent-hover);
+}
+
+.glyph-btn--secondary {
+  background: var(--glyph-bg-surface);
+  color: var(--glyph-ink);
+  border-color: var(--glyph-border);
+}
+.glyph-btn--secondary:hover:not(:disabled) {
+  background: var(--glyph-bg-raised);
+  border-color: var(--glyph-border-strong);
+}
+
+.glyph-btn--ghost {
+  background: transparent;
+  color: var(--glyph-ink-secondary);
+}
+.glyph-btn--ghost:hover:not(:disabled) {
+  background: var(--glyph-bg-surface);
+  color: var(--glyph-ink);
+}

@@ -1,4 +1,5 @@
 @import './tokens.css';
+@import './components.css';
 
 /* Base reset scoped to Glyph UI surfaces (opt-in via class) */
 .glyph-root {
