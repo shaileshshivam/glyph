@@ -1,0 +1,39 @@
+.glyph-login {
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  background: var(--glyph-bg-base);
+  padding: var(--glyph-space-4);
+}
+.glyph-login__card {
+  background: var(--glyph-bg-surface);
+  border: 1px solid var(--glyph-border);
+  padding: var(--glyph-space-6);
+  width: min(420px, 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--glyph-space-4);
+}
+.glyph-login__title {
+  font-family: var(--glyph-font-display);
+  font-size: 36px;
+  margin: 0;
+  color: var(--glyph-ink);
+}
+.glyph-login__subtitle {
+  font-family: var(--glyph-font-body);
+  color: var(--glyph-ink-secondary);
+  margin: 0;
+}
+.glyph-login__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--glyph-space-3);
+}
+.glyph-login__footnote {
+  font-family: var(--glyph-font-body);
+  font-size: 13px;
+  color: var(--glyph-ink-tertiary);
+  margin: 0;
+}

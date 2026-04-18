@@ -1,5 +1,6 @@
 @import '@glyph/ui/styles.css';
 @import '@glyph/theme-mithila/theme.css';
+@import './styles/login.css';
 
 html, body {
   margin: 0;
