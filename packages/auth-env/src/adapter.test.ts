@@ -1,4 +1,4 @@
-import { describe, expect, test, beforeEach } from 'vitest';
+import { beforeEach, describe, expect, test } from 'vitest';
 import { envAuth } from './adapter';
 
 const PASSWORD_VAR = 'TEST_GLYPH_PASSWORD';

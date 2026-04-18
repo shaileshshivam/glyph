@@ -10,9 +10,7 @@ export interface CollectionSummary {
 
 export const listCollections = createServerFn({ method: 'GET' }).handler(
   async (): Promise<CollectionSummary[]> => {
-    const config = await loadConfig(
-      resolveConfigPath({ env: process.env, cwd: process.cwd() }),
-    );
+    const config = await loadConfig(resolveConfigPath({ env: process.env, cwd: process.cwd() }));
 
     // Phase 1: collections are read from config.workspace or hardcoded for the
     // v1 single-workspace model. Real schema loading happens in Plan 04.

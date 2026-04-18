@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest';
-import { signSession, verifySession, type SessionPayload } from './session';
+import { type SessionPayload, signSession, verifySession } from './session';
 
 const SECRET = 'a'.repeat(64); // 32 bytes as hex
 

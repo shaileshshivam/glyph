@@ -1,6 +1,6 @@
-import { Button, Field, Input } from '@glyph/ui';
 import { Lotus } from '@glyph/theme-mithila';
-import { Link, createFileRoute, useNavigate, useRouter } from '@tanstack/react-router';
+import { Button, Field, Input } from '@glyph/ui';
+import { createFileRoute, Link, useNavigate, useRouter } from '@tanstack/react-router';
 import { type FormEvent, useState } from 'react';
 import { signInAction } from '../server/signInAction';
 
@@ -31,9 +31,7 @@ function LoginPage() {
     try {
       const result = await signInAction({ data: { password } });
       if (!result.ok) {
-        setError(
-          result.reason === 'invalid_password' ? 'Wrong password.' : 'Sign-in failed.',
-        );
+        setError(result.reason === 'invalid_password' ? 'Wrong password.' : 'Sign-in failed.');
         return;
       }
       await router.invalidate();
@@ -52,11 +50,7 @@ function LoginPage() {
         <h1 className="glyph-login__title">Glyph</h1>
         <p className="glyph-login__subtitle">Sign in to your workspace.</p>
         <form onSubmit={handleSubmit} className="glyph-login__form">
-          <Field
-            label="Password"
-            htmlFor="glyph-password"
-            error={error ?? undefined}
-          >
+          <Field label="Password" htmlFor="glyph-password" error={error ?? undefined}>
             <Input
               id="glyph-password"
               type="password"

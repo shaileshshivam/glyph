@@ -19,9 +19,7 @@ export const signInAction = createServerFn({ method: 'POST' })
     return { password: (data as { password: string }).password };
   })
   .handler(async ({ data }): Promise<SignInResult> => {
-    const config = await loadConfig(
-      resolveConfigPath({ env: process.env, cwd: process.cwd() }),
-    );
+    const config = await loadConfig(resolveConfigPath({ env: process.env, cwd: process.cwd() }));
     if (config.auth === undefined || !('signIn' in config.auth)) {
       return { ok: false, reason: 'auth_not_configured' };
     }

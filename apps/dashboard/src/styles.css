@@ -1,9 +1,10 @@
-@import '@glyph/ui/styles.css';
-@import '@glyph/theme-mithila/theme.css';
-@import './styles/login.css';
-@import './styles/dashboard.css';
+@import "@glyph/ui/styles.css";
+@import "@glyph/theme-mithila/theme.css";
+@import "./styles/login.css";
+@import "./styles/dashboard.css";
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
 }

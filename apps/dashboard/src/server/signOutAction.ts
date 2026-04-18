@@ -4,9 +4,7 @@ import { loadConfig, resolveConfigPath } from '../lib/config';
 
 export const signOutAction = createServerFn({ method: 'POST' }).handler(
   async (): Promise<{ ok: boolean }> => {
-    const config = await loadConfig(
-      resolveConfigPath({ env: process.env, cwd: process.cwd() }),
-    );
+    const config = await loadConfig(resolveConfigPath({ env: process.env, cwd: process.cwd() }));
     if (config.auth === undefined || !('signOut' in config.auth)) {
       return { ok: false };
     }

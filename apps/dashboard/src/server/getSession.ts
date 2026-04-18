@@ -28,9 +28,7 @@ export const getSession = createServerFn({ method: 'GET' }).handler(
   async (): Promise<SerializableSession | null> => {
     const request = getRequest();
 
-    const config = await loadConfig(
-      resolveConfigPath({ env: process.env, cwd: process.cwd() }),
-    );
+    const config = await loadConfig(resolveConfigPath({ env: process.env, cwd: process.cwd() }));
     if (config.auth === undefined) return null;
 
     const session: AuthSession | null = await config.auth.getSession({

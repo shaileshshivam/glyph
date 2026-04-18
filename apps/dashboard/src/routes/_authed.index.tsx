@@ -1,4 +1,4 @@
-import { Link, createFileRoute } from '@tanstack/react-router';
+import { createFileRoute, Link } from '@tanstack/react-router';
 import { type CollectionSummary, listCollections } from '../server/listCollections';
 
 export const Route = createFileRoute('/_authed/')({
@@ -23,8 +23,8 @@ function DashboardHome() {
           <div className="glyph-dashboard__empty">
             <p>No collections configured yet.</p>
             <p className="glyph-dashboard__hint">
-              Set <code>GLYPH_COLLECTIONS</code> to a comma-separated list of folder names
-              (e.g. <code>posts,garden,projects</code>) or wait for the Plan 04 schema loader.
+              Set <code>GLYPH_COLLECTIONS</code> to a comma-separated list of folder names (e.g.{' '}
+              <code>posts,garden,projects</code>) or wait for the Plan 04 schema loader.
             </p>
           </div>
         ) : (

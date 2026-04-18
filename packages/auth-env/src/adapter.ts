@@ -1,5 +1,5 @@
 import type { AuthAdapter, AuthAdapterContext, AuthSession } from '@glyph/core';
-import { signSession, verifySession, type SessionPayload } from './session';
+import { type SessionPayload, signSession, verifySession } from './session';
 
 export interface EnvAuthOptions {
   /** Name of the env var holding the password. Default: `GLYPH_PASSWORD`. */

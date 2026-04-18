@@ -1,10 +1,8 @@
-import { Link, createFileRoute } from '@tanstack/react-router';
+import { createFileRoute, Link } from '@tanstack/react-router';
 import { type EntryRow, listEntries } from '../server/listEntries';
 
 export const Route = createFileRoute('/_authed/collections/$name')({
-  loader: async ({
-    params,
-  }): Promise<{ entries: EntryRow[]; name: string }> => {
+  loader: async ({ params }): Promise<{ entries: EntryRow[]; name: string }> => {
     const entries = await listEntries({ data: { collection: params.name } });
     return { entries, name: params.name };
   },
@@ -34,9 +32,7 @@ function CollectionPage() {
               <li key={e.path} className="glyph-dashboard__item">
                 <div className="glyph-dashboard__entry">
                   <span className="glyph-dashboard__item-label">{e.slug}</span>
-                  <span className="glyph-dashboard__item-count">
-                    {e.revision.slice(0, 7)}
-                  </span>
+                  <span className="glyph-dashboard__item-count">{e.revision.slice(0, 7)}</span>
                 </div>
               </li>
             ))}

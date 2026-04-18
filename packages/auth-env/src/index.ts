@@ -1,4 +1,3 @@
-export { envAuth } from './adapter';
 export type {
   EnvAuthAdapter,
   EnvAuthOptions,
@@ -6,5 +5,6 @@ export type {
   SignInResult,
   SignOutResult,
 } from './adapter';
-export { signSession, verifySession } from './session';
+export { envAuth } from './adapter';
 export type { SessionPayload, VerifyOptions } from './session';
+export { signSession, verifySession } from './session';

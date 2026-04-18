@@ -20,9 +20,7 @@ export const listEntries = createServerFn({ method: 'GET' })
     return { collection: (data as { collection: string }).collection };
   })
   .handler(async ({ data }): Promise<EntryRow[]> => {
-    const config = await loadConfig(
-      resolveConfigPath({ env: process.env, cwd: process.cwd() }),
-    );
+    const config = await loadConfig(resolveConfigPath({ env: process.env, cwd: process.cwd() }));
 
     const raw = await config.storage.list(data.collection);
     return raw
