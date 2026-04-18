@@ -93,3 +93,17 @@
   background: var(--glyph-bg-surface);
   border: 1px solid var(--glyph-border);
 }
+
+.glyph-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--glyph-space-3) var(--glyph-space-5);
+  border-bottom: 1px solid var(--glyph-border);
+  background: var(--glyph-bg-surface);
+}
+.glyph-topbar__brand {
+  font-family: var(--glyph-font-display);
+  font-size: 20px;
+  color: var(--glyph-ink);
+}
