@@ -64,3 +64,55 @@
   background: var(--glyph-bg-surface);
   color: var(--glyph-ink);
 }
+
+/* ==========================================================================
+   Input / Textarea
+   ========================================================================== */
+
+.glyph-input,
+.glyph-textarea {
+  width: 100%;
+  font-family: var(--glyph-font-body);
+  font-size: var(--glyph-font-size-body);
+  line-height: var(--glyph-line-height-body);
+  color: var(--glyph-ink);
+  background: var(--glyph-bg-surface);
+  border: 1px solid var(--glyph-border);
+  border-radius: var(--glyph-radius-md);
+  padding: var(--glyph-space-2) var(--glyph-space-3);
+  transition:
+    border-color var(--glyph-duration-fast) var(--glyph-ease),
+    box-shadow var(--glyph-duration-fast) var(--glyph-ease);
+  outline: none;
+}
+
+.glyph-input:focus-visible,
+.glyph-textarea:focus-visible {
+  border-color: var(--glyph-border-focus);
+  box-shadow: 0 0 0 3px var(--glyph-accent-muted);
+}
+
+.glyph-input:disabled,
+.glyph-textarea:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.glyph-input::placeholder,
+.glyph-textarea::placeholder {
+  color: var(--glyph-ink-ghost);
+}
+
+.glyph-textarea {
+  resize: vertical;
+  min-height: 96px;
+  line-height: var(--glyph-line-height-body);
+}
+
+.glyph-input--invalid {
+  border-color: var(--glyph-danger);
+}
+.glyph-input--invalid:focus-visible {
+  border-color: var(--glyph-danger);
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.18);
+}
