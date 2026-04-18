@@ -10,3 +10,5 @@ export { Label } from './components/Label';
 export type { LabelProps } from './components/Label';
 export { Field } from './components/Field';
 export type { FieldProps } from './components/Field';
+export { Select } from './components/Select';
+export type { SelectProps, SelectOption } from './components/Select';
