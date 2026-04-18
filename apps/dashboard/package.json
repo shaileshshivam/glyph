@@ -14,6 +14,7 @@
   "dependencies": {
     "@glyph/auth-env": "workspace:*",
     "@glyph/core": "workspace:*",
+    "@glyph/schema-yaml": "workspace:*",
     "@glyph/storage-github": "workspace:*",
     "@glyph/theme-mithila": "workspace:*",
     "@glyph/ui": "workspace:*",

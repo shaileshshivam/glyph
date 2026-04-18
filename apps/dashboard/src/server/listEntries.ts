@@ -21,8 +21,11 @@ export const listEntries = createServerFn({ method: 'GET' })
   })
   .handler(async ({ data }): Promise<EntryRow[]> => {
     const config = await loadConfig(resolveConfigPath({ env: process.env, cwd: process.cwd() }));
+    const schemas = config.schema !== undefined ? await config.schema.parse('') : [];
+    const schema = schemas.find((s) => s.name === data.collection);
+    const folder = schema?.folder ?? data.collection;
 
-    const raw = await config.storage.list(data.collection);
+    const raw = await config.storage.list(folder);
     return raw
       .filter((e) => !e.isBinary)
       .map((e) => ({

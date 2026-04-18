@@ -1,0 +1,25 @@
+collections:
+  posts:
+    label: Writing
+    folder: src/content/posts
+    extension: mdx
+    fields:
+      - { name: title, type: string, required: true }
+      - { name: date, type: date, required: true }
+      - { name: excerpt, type: text }
+      - { name: tags, type: list }
+      - { name: status, type: select, options: [draft, published], defaultValue: draft }
+      - { name: featured, type: boolean, defaultValue: false }
+      - { name: body, type: markdown, required: true }
+
+  garden:
+    label: Garden
+    folder: src/content/garden
+    extension: mdx
+    fields:
+      - { name: title, type: string, required: true }
+      - { name: date, type: date, required: true }
+      - { name: excerpt, type: text }
+      - { name: maturity, type: select, options: [seed, budding, evergreen], defaultValue: seed }
+      - { name: tags, type: list }
+      - { name: body, type: markdown, required: true }

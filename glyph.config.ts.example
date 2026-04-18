@@ -1,12 +1,7 @@
-// glyph.config.ts.example
-//
-// Copy this file to `glyph.config.ts` at the monorepo root, fill in the fields,
-// and restart the dashboard. The dashboard reads this file at startup to wire
-// up its adapters.
-
-import { envAuth } from '@glyph/auth-env';
 import { defineConfig } from '@glyph/core';
+import { envAuth } from '@glyph/auth-env';
 import { githubStorage } from '@glyph/storage-github';
+import { yamlSchema } from '@glyph/schema-yaml';
 
 export default defineConfig({
   storage: githubStorage({
@@ -14,13 +9,13 @@ export default defineConfig({
     repo: process.env.GLYPH_GITHUB_REPO ?? 'your-content-repo',
     branch: process.env.GLYPH_GITHUB_BRANCH ?? 'main',
     token: process.env.GITHUB_TOKEN ?? '',
-    // contentRoot: 'src/content',
   }),
   auth: envAuth({
     passwordEnvVar: 'GLYPH_PASSWORD',
     sessionSecretEnvVar: 'GLYPH_SESSION_SECRET',
   }),
-  workspace: {
-    name: 'My workspace',
-  },
+  schema: yamlSchema({
+    path: process.env.GLYPH_SCHEMA_PATH ?? './glyph.collections.yml',
+  }),
+  workspace: { name: 'My workspace' },
 });

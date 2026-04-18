@@ -29,6 +29,9 @@ importers:
       '@glyph/core':
         specifier: workspace:*
         version: link:../../packages/core
+      '@glyph/schema-yaml':
+        specifier: workspace:*
+        version: link:../../packages/schema-yaml
       '@glyph/storage-github':
         specifier: workspace:*
         version: link:../../packages/storage-github
