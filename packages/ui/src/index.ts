@@ -12,3 +12,5 @@ export { Field } from './components/Field';
 export type { FieldProps } from './components/Field';
 export { Select } from './components/Select';
 export type { SelectProps, SelectOption } from './components/Select';
+export { Dialog } from './components/Dialog';
+export type { DialogProps } from './components/Dialog';
